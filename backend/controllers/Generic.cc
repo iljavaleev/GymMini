@@ -1,12 +1,11 @@
 #include "Generic.h"
-#include "utils/utils.hpp"
+#include "utils/utils.h"
 #include "models/Endurance.h"
 #include "models/Strength.h"
-#include <ranges>
-#include <tuple>
 
-using drogon_model::cpp_gymdb::Endurance;
-using drogon_model::cpp_gymdb::Strength;
+
+using drogon_model::postgres::Endurance;
+using drogon_model::postgres::Strength;
 
 using drogon::orm::Criteria;
 using drogon::orm::CompareOperator;
@@ -26,7 +25,6 @@ std::unique_ptr<std::vector<T>> Generic::getWork(int number,
     }
     catch(const std::exception& e)
     {
-
         LOGGER->error(e.what());
         return nullptr;
     }

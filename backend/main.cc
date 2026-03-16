@@ -1,8 +1,8 @@
 #include <drogon/drogon.h>
-#include <nlohmann/json.hpp>
 #include <cstdlib>
-#include "utils/utils.hpp"
+#include "utils/utils.h"
 #include <spdlog/spdlog.h>
+
 
 // void startup() __attribute__((constructor));
 
@@ -22,7 +22,7 @@
 
 void setupCors()
 {
-    const std::string allowed = std::getenv("FRONT_URL");
+    const std::string allowed = "http://localhost:5173";
     drogon::app().registerSyncAdvice([allowed](
         const drogon::HttpRequestPtr &req) -> drogon::HttpResponsePtr {
         if (req->method() == drogon::HttpMethod::Options)

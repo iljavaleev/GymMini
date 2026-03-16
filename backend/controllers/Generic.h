@@ -1,11 +1,8 @@
 #pragma once
 
 #include <drogon/HttpController.h>
-#include "models/UserExercise.h"
 
 using namespace drogon;
-using drogon_model::cpp_gymdb::UserExercise;
-
 
 class Generic : public drogon::HttpController<Generic>
 {

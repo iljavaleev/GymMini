@@ -22,15 +22,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(${PROJECT_NAME} main.cc)
 
 find_package(Drogon CONFIG REQUIRED)
-find_package(jwt-cpp CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
-add_subdirectory(third_party/Bcrypt.cpp)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon 
-                                    jwt-cpp::jwt-cpp
-                                    spdlog::spdlog
-                                    bcrypt)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon spdlog::spdlog)
 
 # ##############################################################################
 
@@ -43,29 +38,19 @@ else ()
 endif ()
 
 aux_source_directory(controllers CTL_SRC)
-aux_source_directory(filters FILTER_SRC)
 aux_source_directory(models MODEL_SRC)
-aux_source_directory(utils UTILS_SRC)
-
-drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/views
-                    ${CMAKE_CURRENT_BINARY_DIR})
 
 
 target_include_directories(${PROJECT_NAME}
                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
-                                   ${CMAKE_CURRENT_SOURCE_DIR}/models
-                                   ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Bcrypt.cpp)
+                                   ${CMAKE_CURRENT_SOURCE_DIR}/models)
 target_sources(${PROJECT_NAME}
                PRIVATE
                ${SRC_DIR}
                ${CTL_SRC}
-               ${FILTER_SRC}
-               ${MODEL_SRC}
-               ${UTILS_SRC})
+               ${MODEL_SRC})
 # ##############################################################################
 # uncomment the following line for dynamically loading views 
 # set_property(TARGET ${PROJECT_NAME} PROPERTY ENABLE_EXPORTS ON)
 
 # ##############################################################################
-
-add_subdirectory(test)
