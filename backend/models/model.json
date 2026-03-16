@@ -1,0 +1,12 @@
+{
+    "rdbms": "postgresql",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dbname": "postgres",
+    "schema": "public",
+    "user": "postgres",
+    "password": "",
+    "tables": [ "endurance", "strength" ],
+    "relationships": {
+    }
+}
