@@ -23,19 +23,22 @@ const std::string Endurance::primaryKeyName = "";
 const bool Endurance::hasPrimaryKey = false;
 const std::string Endurance::tableName = "\"endurance\"";
 
+
 const std::vector<typename Endurance::MetaData> Endurance::metaData_={
-{"id","int32_t","integer",4,1,0,1},
-{"exercise","std::string","text",0,0,0,0},
-{"reps","std::string","character varying",32,0,0,0},
-{"superset","int32_t","integer",4,0,0,0},
-{"work_id","int32_t","integer",4,0,0,1},
-{"week_id","int32_t","integer",4,0,0,1}
+    {"id","int32_t","integer",4,1,0,1},
+    {"exercise","std::string","text",0,0,0,0},
+    {"reps","std::string","character varying",32,0,0,0},
+    {"superset","int32_t","integer",4,0,0,0},
+    {"work_id","int32_t","integer",4,0,0,1},
+    {"week_id","int32_t","integer",4,0,0,1}
 };
+
 const std::string &Endurance::getColumnName(size_t index) noexcept(false)
 {
     assert(index < metaData_.size());
     return metaData_[index].colName_;
 }
+
 Endurance::Endurance(const Row &r, const ssize_t indexOffset) noexcept
 {
     if(indexOffset < 0)

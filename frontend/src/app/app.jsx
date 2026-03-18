@@ -1,7 +1,7 @@
 
 import { Generic } from '../generic/generic'
 import { Routes, Route, Outlet, Navigate } from 'react-router';
-import { StyledChiled, StyledContainer } from './styles';
+// import { StyledChiled, StyledContainer } from './styles';
 
 
 const App = () => {
@@ -18,11 +18,11 @@ const App = () => {
 
 const Layout = () => {
   return (
-     <StyledContainer>
-      <StyledChiled>
+     <div id='styled-container'>
+      <div id='styled-child'>
         <Outlet />
-      </StyledChiled>
-     </StyledContainer>
+      </div>
+     </div>
   );
 };
 

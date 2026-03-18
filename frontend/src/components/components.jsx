@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 
+
 const Button = ({ cls, onClick, type = 'button', children, 
     disabled, style }) => (
     <button className={cls} style={style} type={type} onClick={onClick} 
@@ -9,7 +10,7 @@ const Button = ({ cls, onClick, type = 'button', children,
 );
 
 
-const InputWithLabel = ({ id, cls, value, defaultValue, type = 'text', 
+const InputWithLabel = ({ id, cls, value, defaultValue, type = 'number', 
     isFocused, children, onInputChange, onClick, help, ...rest }) => {
     const inputRef = useRef();
     
@@ -33,8 +34,10 @@ const InputWithLabel = ({ id, cls, value, defaultValue, type = 'text',
 };
 
 
-const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, lbl, 
-    cls, br=false }) => {
+const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, lbl, cls, 
+    br=false }) => {
+    
+
     return (
         <form onSubmit={onSearchSubmit}>
             <InputWithLabel className="search" value={searchTerm} 
@@ -46,6 +49,7 @@ const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, lbl,
                 disabled={!searchTerm}>
                 Поиск
             </button>
+            
         </form>
     );
 };

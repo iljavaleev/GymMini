@@ -11,6 +11,8 @@ using drogon::orm::Criteria;
 using drogon::orm::CompareOperator;
 using drogon::orm::Mapper;
 
+using namespace drogon::orm;
+
 
 template<typename T>
 std::unique_ptr<std::vector<T>> Generic::getWork(int number, 
@@ -19,8 +21,7 @@ std::unique_ptr<std::vector<T>> Generic::getWork(int number,
     Mapper<T> mp(clientPtr);
     try
     {   
-        auto res_future = mp.findFutureBy(Criteria(T::Cols::_work_id, 
-            CompareOperator::EQ, number));
+        auto res_future = mp.findFutureBy(Criteria("work_id=$?"_sql, number));
         return std::make_unique<std::vector<T>>(std::move(res_future.get()));
     }
     catch(const std::exception& e)
@@ -28,6 +29,7 @@ std::unique_ptr<std::vector<T>> Generic::getWork(int number,
         LOGGER->error(e.what());
         return nullptr;
     }
+
     return nullptr;
 }
 
@@ -36,8 +38,7 @@ void Generic::seacrh(const HttpRequestPtr &req,
             std::function<void (const HttpResponsePtr &)> &&callback) const
 {
     auto params = req->getParameters();
-    if (not params.contains("book") || params.at("book").empty() ||
-        not params.contains("number") || params.at("number").empty())
+    if (not params.contains("book") || not params.contains("number"))
     {
         sendBadRequest(callback, "Error query params", 
             drogon::HttpStatusCode::k400BadRequest);
@@ -46,7 +47,7 @@ void Generic::seacrh(const HttpRequestPtr &req,
 
     int number = std::stoi(params.at("number"));
     Json::Value data(Json::arrayValue);
-    
+   
     if (params.at("book") == "1")
     {
         std::unique_ptr<std::vector<Endurance>> work = 
@@ -64,7 +65,7 @@ void Generic::seacrh(const HttpRequestPtr &req,
             data.append(std::move(val));
         }
     }
-    
+   
     if (params.at("book") == "0")
     {
         std::unique_ptr<std::vector<Strength>> work = getWork<Strength>(number);

@@ -7,7 +7,6 @@ const StyledGenContainer = styled.div`
     justify-content: space-around;
     align-items: stretch;
     
-
     .program-choice
     {
         flex: 1;
@@ -18,8 +17,6 @@ const StyledGenContainer = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: start;
-
-
     }
 
     .program-search
@@ -46,29 +43,36 @@ const StyledSearchForm = styled.div`
     }
     .submit-button
     {
-        background-color:  #c1e15af4;
+        background-color:  #145775b4;
     }
 `;
 
 const StyledButton = styled.div`
     button
     {
-        color: black;
+        // color: white;
         padding: 0.6em 0.8em;
         border: none;
         border-radius: 10px; 
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
+
+        .active
+        {
+            color: green;
+        }
     }
+
     button:hover {
         transform: translateY(-2px); /* Slight lift on hover */
     }
+    
 `;
 
 const StyledGenericList = styled.div`
     ul li::marker 
     {
-        color: #578f6dff;
+        color: rgb(109, 147, 167);
         font-size: 1.2em;
     }
 `;

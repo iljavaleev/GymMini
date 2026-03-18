@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
 
-const StyledContainer = styled.div`
-    max-inline-size: 1080px;
-    margin-inline: auto;
-`;
+// const StyledContainer = styled.div`
+//     max-inline-size: 1080px;
+//     margin-inline: auto;
+// `;
 
 
 const StyledChiled = styled.div`
     .area
     {   
         border-radius: 20px;
-        background-color: #b3e77891;
+        background-color: #030311eb;
         padding: 1.5em;
-        border: 3px solid #80bd3b91;
+        border: 3px solid #3b347491;
        
     }
 
     input
     {
-        border: 1px solid #b3e77891;
+        border: 1px solid #06162d91;
         border-radius: 10px;
         color: #333;
         background-color: #f1ebebec;
@@ -36,7 +36,7 @@ const StyledChiled = styled.div`
     button
     {
         background-color: #f1ebebec;
-        color: black;
+        color: white;
         padding: 0.8em 1.2em;
         border: none;
         border-radius: 10px; 
