@@ -3,7 +3,6 @@ import { useStorageState } from "../customhooks/hooks"
 import { List } from "./components";
 import { useReducer, useState, useEffect, useCallback } from "react";
 import axios from 'axios';
-import { StyledGenContainer, StyledButton, StyledSearchForm  } from "./styles";
 
 const formatUrl = (book, number) =>  
     `http://localhost:8000/api/v1/search?book=${book}&number=${number}`;
@@ -48,7 +47,6 @@ const Generic = () => {
 
     const [stories, dispatchStories] = useReducer(
         storiesReducer, { data: [], isLoading: false, isError: false });
-    
     
     const [url, setUrl] = useState("");
 
@@ -97,13 +95,15 @@ const Generic = () => {
                         Выберите программу
                     </span><br/>
                     &nbsp;
-                    <div>
-                        <Button id={bookTerm ? "active" : "inactive"}
-                            onClick={() => setBookTerm(0)} >
+                    <div >
+                        <Button 
+                            onClick={() => setBookTerm(0)} 
+                            cls={`search-button ${!bookTerm ? "active" : "inactive"}`}>
                                 Пауэрлифтинг
                         </Button>
-                        <Button  id={!bookTerm ? "active" : "inactive"}
-                            onClick={() => setBookTerm(1)} >
+                        <Button
+                            onClick={() => setBookTerm(1)} 
+                            cls={`search-button ${bookTerm ? "active" : "inactive"}`}>
                                 Похудайка
                         </Button>
                     </div>

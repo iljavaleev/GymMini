@@ -40,12 +40,12 @@ const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, lbl, cls,
 
     return (
         <form onSubmit={onSearchSubmit}>
-            <InputWithLabel className="search" value={searchTerm} 
+            <InputWithLabel className="search-input" value={searchTerm} 
                 isFocused onInputChange={onSearchInput} cls={cls}>
                 {lbl}
             </InputWithLabel>
             {br && <br/>}
-            <button type="submit" className="submit-button" 
+            <button type="submit" className="search-button search" 
                 disabled={!searchTerm}>
                 Поиск
             </button>

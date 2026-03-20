@@ -1,7 +1,6 @@
 
 import { Generic } from '../generic/generic'
 import { Routes, Route, Outlet, Navigate } from 'react-router';
-// import { StyledChiled, StyledContainer } from './styles';
 
 
 const App = () => {
