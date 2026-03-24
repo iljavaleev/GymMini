@@ -1,0 +1,11 @@
+[Unit]
+Description=Gym
+After=network.target
+
+[Service]
+ExecStart=/home/local/bin/cpp-gym-back
+Restart=always
+User=iljavaleev
+
+[Install]
+WantedBy=multi-user.target

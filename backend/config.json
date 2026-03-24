@@ -114,7 +114,7 @@
         //session_max_age: The max age of the session cookie, -1 by default
         "session_max_age": -1,
         //document_root: Root path of HTTP document, default path is ./
-        "document_root": "./",
+        "document_root": "../dist",
         //home_page: Set the HTML file of the home page, the default value is "index.html"
         //If there isn't any handler registered to the path "/", the home page file in the "document_root" is send to clients as a response
         //to the request for "/".
@@ -232,7 +232,7 @@
             "max_files": 0,
             //log_level: "DEBUG" by default,options:"TRACE","DEBUG","INFO","WARN"
             //The TRACE level is only valid when built in DEBUG mode.
-            "log_level": "DEBUG",
+            "log_level": "ERROR",
             //display_local_time: false by default, if true, the log time is displayed in local time
             "display_local_time": false
         },

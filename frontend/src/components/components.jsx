@@ -10,8 +10,8 @@ const Button = ({ cls, onClick, type = 'button', children,
 );
 
 
-const InputWithLabel = ({ id, cls, value, defaultValue, type = 'number', 
-    isFocused, children, onInputChange, onClick, help, ...rest }) => {
+const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, isFocused, add, sub,
+    br=false }) => {
     const inputRef = useRef();
     
     useEffect(() => {
@@ -20,38 +20,26 @@ const InputWithLabel = ({ id, cls, value, defaultValue, type = 'number',
             inputRef.current.focus();
         }
     }, [isFocused]);
-
-    
     return (
-        <div  className={cls}>
-            <label htmlFor={id}>{children}</label>
-            &nbsp;
-            <input ref={inputRef} value={value} id={id} 
-                type={type} defaultValue={defaultValue} 
-                onChange={onInputChange} placeholder={help} onClick={onClick} {...rest}/>
+        <div>
+            <span>Введите номер тренировки</span>
+            <form onSubmit={onSearchSubmit}>
+                <div className="trainig-num">
+                <button onClick={sub} className="trainig-num-button">-</button>
+                <input ref={inputRef}
+                    value={searchTerm} 
+                    onChange={onSearchInput}/>
+                <button onClick={add} className="trainig-num-button">+</button>
+                </div>
+                {br && <br/>}
+                <button type="submit" className="search-button search" 
+                    disabled={!searchTerm}>
+                    Поиск
+                </button>
+            </form>
+            
         </div>
     );
 };
 
-
-const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit, lbl, cls, 
-    br=false }) => {
-    
-
-    return (
-        <form onSubmit={onSearchSubmit}>
-            <InputWithLabel className="search-input" value={searchTerm} 
-                isFocused onInputChange={onSearchInput} cls={cls}>
-                {lbl}
-            </InputWithLabel>
-            {br && <br/>}
-            <button type="submit" className="search-button search" 
-                disabled={!searchTerm}>
-                Поиск
-            </button>
-            
-        </form>
-    );
-};
-
-export { Button, InputWithLabel, SearchForm };
+export { Button, SearchForm };

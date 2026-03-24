@@ -105,7 +105,7 @@ button:hover {
         border: 1px solid #06162d91;
         border-radius: 10px;
         color: #333;
-        background-color: #9c6969ec;
+        background-color: #f5efefec;
         cursor: pointer;
         transition: border-color 0.3s ease;
     }
@@ -158,8 +158,17 @@ button:hover {
     
 }
 
+.trainig-num
+{
+    margin-top: 0.8em;
 
+}
 
+.trainig-num-button
+{
+    border-radius: 0.6em;
+    margin: 0.8em;
+}
 
 #styled-search-form 
 {

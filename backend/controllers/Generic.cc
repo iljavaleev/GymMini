@@ -2,6 +2,7 @@
 #include "utils/utils.h"
 #include "models/Endurance.h"
 #include "models/Strength.h"
+#include <format>
 
 
 using drogon_model::postgres::Endurance;
@@ -59,7 +60,7 @@ void Generic::seacrh(const HttpRequestPtr &req,
             
             val["exercise"] = e.getValueOfExercise();
             if (e.getValueOfReps().length())
-                val["reps"] = e.getValueOfReps();
+                val["reps"] = std::format("/{}", e.getValueOfReps());
             if (e.getValueOfSuperset())
                 val["superset"] = e.getValueOfSuperset();
             data.append(std::move(val));
@@ -75,7 +76,7 @@ void Generic::seacrh(const HttpRequestPtr &req,
             Json::Value val;
             val["exercise"] = s.getValueOfExercise();
             if (s.getValueOfReps().length())
-                val["reps"] = s.getValueOfReps();
+                val["reps"] = std::format("/{}", s.getValueOfReps());
             data.append(std::move(val));
         }
     }

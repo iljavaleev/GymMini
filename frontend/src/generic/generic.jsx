@@ -85,8 +85,11 @@ const Generic = () => {
     }, [url]);
 
     const handleSearch = (event) => {setSearchNumberTerm(event.target.value);};
-
-
+    const add = (event) => { setSearchNumberTerm(Number(searchNumberTerm) + 1); 
+        event.preventDefault();}
+    const sub = (event) => { setSearchNumberTerm(Number(searchNumberTerm) - 1); 
+        event.preventDefault();}
+        
     return (
         <div id="styled-gen-container">
             <div className="program-choice area">
@@ -113,8 +116,10 @@ const Generic = () => {
                     <SearchForm searchTerm={searchNumberTerm} 
                                 onSearchSubmit={handleSearchSubmit} 
                                 onSearchInput={handleSearch}
-                                lbl="Введите номер тренировки:"
                                 cls="program-search-label"
+                                isFocused
+                                add={add}
+                                sub={sub}
                                 br={true}/>
                 </div>
                 

@@ -4,25 +4,9 @@
 #include <spdlog/spdlog.h>
 
 
-// void startup() __attribute__((constructor));
-
-// void startup() 
-// {
-//     int result = system("../setup/db_entry.sh"); 
-
-//     if (result == 0) 
-//     {
-//         std::cout << "Command executed successfully." << std::endl;
-//     } 
-//     else 
-//     {
-//         exit(1);
-//     }
-// }
-
 void setupCors()
 {
-    const std::string allowed = "http://localhost:5173";
+    const std::string allowed = "http://localhost";
     drogon::app().registerSyncAdvice([allowed](
         const drogon::HttpRequestPtr &req) -> drogon::HttpResponsePtr {
         if (req->method() == drogon::HttpMethod::Options)

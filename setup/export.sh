@@ -1,0 +1,11 @@
+#!/bin/bash
+export DB_USER="postgres"
+export DB_PASSWORD="postgres"
+export DB_NAME="postgres"
+export DB_PORT="5432"
+export POSTGRES_PASSWORD="postgres"
+export DB_HOST="localhost"
+export ENDURANCE_FILE_PATH="endurance.csv"
+export STRENGTH_FILE_PATH="strength.csv"
+export EXS_FILE_PATH="exs.csv"
+export FRONT_URL="http://localhost:3000"
