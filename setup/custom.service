@@ -1,11 +1,14 @@
 [Unit]
 Description=Gym
-After=network.target
+Wants=network.target
+After=syslog.target network-online.target
 
 [Service]
-ExecStart=/home/local/bin/cpp-gym-back
+ExecStart=/home/iljavaleev/GymMini/backend/build/cpp-gym-back
 Restart=always
-User=iljavaleev
+RestartSec=10
+KillMode=process
+User=root
 
 [Install]
 WantedBy=multi-user.target

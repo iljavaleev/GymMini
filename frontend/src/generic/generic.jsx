@@ -5,7 +5,7 @@ import { useReducer, useState, useEffect, useCallback } from "react";
 import axios from 'axios';
 
 const formatUrl = (book, number) =>  
-    `http://localhost:8000/api/v1/search?book=${book}&number=${number}`;
+    `/api/v1/search?book=${book}&number=${number}`;
 
 
 const INITIAL_QUERY = formatUrl(0, 0);

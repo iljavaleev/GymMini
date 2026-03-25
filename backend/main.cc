@@ -79,7 +79,7 @@ int main() {
     
     setupCors();
     
-    drogon::app().loadConfigFile("../config.json");
+    drogon::app().loadConfigFile("/home/iljavaleev/GymMini/backend/config.json");
     drogon::app().run();
     return 0;
 }
