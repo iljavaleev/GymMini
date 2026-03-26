@@ -19,6 +19,7 @@ std::unique_ptr<std::vector<T>> Generic::getWork(int number,
     drogon::orm::DbClientPtr clientPtr) const
 {
     Mapper<T> mp(clientPtr);
+    mp.orderBy("id", SortOrder::ASC);
     try
     {   
         auto res_future = mp.findFutureBy(Criteria("work_id=$?"_sql, number));

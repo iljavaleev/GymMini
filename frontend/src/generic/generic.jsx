@@ -1,7 +1,7 @@
 import { Button, SearchForm } from "../components/components";
 import { useStorageState } from "../customhooks/hooks"
 import { List } from "./components";
-import { useReducer, useState, useEffect, useCallback } from "react";
+import { useReducer, useState, useEffect } from "react";
 import axios from 'axios';
 
 const formatUrl = (book, number) =>  
@@ -43,7 +43,7 @@ const getTrainingByNumber = async (url) => {
 const Generic = () => {
     const [searchNumberTerm, setSearchNumberTerm] = 
         useStorageState('number', 1);
-    const [bookTerm, setBookTerm] = useStorageState('book', 0);
+    const [bookTerm, setBookTerm] = useStorageState('book', '0');
 
     const [stories, dispatchStories] = useReducer(
         storiesReducer, { data: [], isLoading: false, isError: false });
@@ -52,16 +52,15 @@ const Generic = () => {
 
     const handleSearchSubmit = (event) => {
         if (event.target.value)
-        {
-            setSearchNumberTerm(event.target.value);
-            localStorage.setItem('number', searchNumberTerm);
-            localStorage.setItem('book', bookTerm);
-        }
+            setSearchNumberTerm(searchNumberTerm);   
+        
+        localStorage.setItem('number', searchNumberTerm);
+        localStorage.setItem('book', bookTerm);
         
         setUrl(formatUrl(bookTerm, searchNumberTerm));
         event.preventDefault();
     };
-
+    
     useEffect(() => {
         if (!url)
             return;
@@ -89,7 +88,7 @@ const Generic = () => {
         event.preventDefault();}
     const sub = (event) => { setSearchNumberTerm(Number(searchNumberTerm) - 1); 
         event.preventDefault();}
-        
+    
     return (
         <div id="styled-gen-container">
             <div className="program-choice area">
@@ -100,13 +99,13 @@ const Generic = () => {
                     &nbsp;
                     <div >
                         <Button 
-                            onClick={() => setBookTerm(0)} 
-                            cls={`search-button ${!bookTerm ? "active" : "inactive"}`}>
+                            onClick={() => setBookTerm("0")} 
+                            cls={`search-button ${bookTerm === "0" ? "active" : "inactive"}`}>
                                 Пауэрлифтинг
                         </Button>
                         <Button
-                            onClick={() => setBookTerm(1)} 
-                            cls={`search-button ${bookTerm ? "active" : "inactive"}`}>
+                            onClick={() => setBookTerm("1")} 
+                            cls={`search-button ${bookTerm === "1" ? "active" : "inactive"}`}>
                                 Похудайка
                         </Button>
                     </div>
