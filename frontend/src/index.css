@@ -59,7 +59,6 @@ button:hover {
 .program-choice
 {
     flex: 1;
-    
     display: flex;
     gap: 1em;
     flex-wrap: wrap;
@@ -87,17 +86,21 @@ button:hover {
 {
     max-inline-size: 1080px;
     margin-inline: auto;
-}
 
-#styled-container > #styled-child
-{
     .area
     {   
         border-radius: 20px;
         background-color: #030311eb;
         padding: 1.5em;
-        border: 3px solid #3b347491;
-       
+        border: 3px solid #3b347491;       
+    }
+    
+    #excel-button
+    {
+        float: right;
+        margin-top: 2em;
+        margin-right: 10%;
+        background-color: rgb(4, 119, 157);
     }
 
     input
@@ -188,3 +191,4 @@ button:hover {
         font-size: 1.2em;
     }
 }
+

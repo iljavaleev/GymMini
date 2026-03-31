@@ -1,4 +1,4 @@
-import { Button, SearchForm } from "../components/components";
+import { Button, ExcelButton, SearchForm } from "../components/components";
 import { useStorageState } from "../customhooks/hooks"
 import { List } from "./components";
 import { useReducer, useState, useEffect } from "react";
@@ -8,8 +8,6 @@ const formatUrl = (book, number) =>
     `/api/v1/search?book=${book}&number=${number}`;
 
 
-const INITIAL_QUERY = formatUrl(0, 0);
-
 
 const storiesReducer = (state, action) => {
     switch (action.type) 
@@ -18,7 +16,7 @@ const storiesReducer = (state, action) => {
             return { ...state, isLoading: true, isError: false };
         case 'TRAINING_FETCH_SUCCESS':
             return { ...state, 
-                data: action.payload, 
+                data: Array.isArray(action.payload) ? action.payload : [], 
                 isLoading: false, 
                 isError: false };
         case 'TRAINING_FETCH_FAILURE':
@@ -126,7 +124,12 @@ const Generic = () => {
             <div className="program-search area">
                 {stories.isError && <p>Something went wrong ...</p>}
                 {stories.isLoading ? ( <p>Loading ...</p> ) : 
-                    ( <List list={stories.data || []} /> )}
+                    ( <List list={stories.data} /> )}
+                {!stories.data.length ||
+                    <ExcelButton data={stories.data} 
+                    fileName={`тренировка ${searchNumberTerm}`}>
+                        Скачать в excel
+                    </ExcelButton>}
             </div>
         </div>
     );

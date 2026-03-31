@@ -6,7 +6,7 @@
 
 void setupCors()
 {
-    const std::string allowed = "http://localhost";
+    const std::string allowed = "http://localhost:3000";
     drogon::app().registerSyncAdvice([allowed](
         const drogon::HttpRequestPtr &req) -> drogon::HttpResponsePtr {
         if (req->method() == drogon::HttpMethod::Options)
@@ -78,8 +78,8 @@ int main() {
     drogon::app().addListener("0.0.0.0", 8000);
     
     setupCors();
-    
-    drogon::app().loadConfigFile("/home/iljavaleev/GymMini/backend/config.json");
+    // /home/iljavaleev/GymMini/backend/config.json
+    drogon::app().loadConfigFile("../config.json");
     drogon::app().run();
     return 0;
 }
