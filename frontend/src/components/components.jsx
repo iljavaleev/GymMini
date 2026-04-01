@@ -28,7 +28,9 @@ const ExcelButton = ({ data, fileName, children }) => {
         data.forEach(item => sheet.addRow(item));
 
         const buffer = await workbook.xlsx.writeBuffer();
-        saveAs(new Blob([buffer]), `${fileName}.xlsx`);
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString();
+        saveAs(new Blob([buffer]), `${formattedDate}.xlsx`);
     }
     return <button id="excel-button" className="search-button" onClick={exportExcel}>{children}</button>;
 };

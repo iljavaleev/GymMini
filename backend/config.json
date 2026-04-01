@@ -115,7 +115,7 @@
         "session_max_age": -1,
         //document_root: Root path of HTTP document, default path is ./
         // "/home/iljavaleev/GymMini/backend/dist"
-        "document_root": "../dist",
+        "document_root": "/home/iljavaleev/GymMini/backend/dist",
         //home_page: Set the HTML file of the home page, the default value is "index.html"
         //If there isn't any handler registered to the path "/", the home page file in the "document_root" is send to clients as a response
         //to the request for "/".
